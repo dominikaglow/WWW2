@@ -21,7 +21,6 @@ function Login(){
             else {
                 /*set item to local storage*/
                 //response.data - access token that we receive
-                //dziala
                 localStorage.setItem("accessToken", response.data);
                 setAuthState({
                     username: response.data.username,
