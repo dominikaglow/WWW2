@@ -51,17 +51,14 @@ function App(){
 
     const logout = () => {
         localStorage.removeItem("accessToken");
-        //setAuthState(false);
-        // setAuthState({
-        //     username: "",
-        //     id: 0,
-        //     status: false,
-        // });
-        setAuthState({...authState, status: false});
+        setAuthState({
+            username: "",
+            id: 0,
+            status: false,
+        });
         // setAuthState(false);
         console.log(authState);
     };
-
     return (
       <div className="App">
           <AuthContext.Provider value={{authState, setAuthState}}>

@@ -21,7 +21,7 @@ function Login(){
             else {
                 /*set item to local storage*/
                 //response.data - access token that we receive
-                localStorage.setItem("accessToken", response.data);
+                localStorage.setItem("accessToken", response.data.token);
                 setAuthState({
                     username: response.data.username,
                     id: response.data.id,

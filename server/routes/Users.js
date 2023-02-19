@@ -50,7 +50,7 @@ router.post("/login", async (req, res) => {
             "securerandomword"
        );
        /*data that we wanna keep secure is argument in sign*/
-       res.json(accessToken);
+       res.json({token: accessToken, username: username, id: user.id});
     });
 });
 
