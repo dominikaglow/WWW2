@@ -1,0 +1,319 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+*>*{
+  font-family: 'Poppins', sans-serif;
+}
+
+html {
+  height: 100%;
+  background-color: #151C35;
+}
+
+body {
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.swiper {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  justify-content: center;
+  --swiper-theme-color: #ffb6c1;
+  background-color: #151C35;
+  align-items: center;
+  color: whitesmoke;
+}
+
+.swiper h1{
+  margin-bottom: 70px;
+}
+
+.Home {
+  padding-left: 50px;
+  padding-right: 50px;
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-items: center;
+  padding-top: 20px;
+  flex-direction: column;
+}
+
+.post {
+  background-color: #153247;
+  width: 50%;
+  min-height: 30vh;
+  border-radius: 10px;
+  margin-bottom: 40px;
+  display:flex;
+  flex-direction: column;
+  border: 3px solid lightgray;
+  width: 100%;
+  height: 100%;
+}
+
+.post:hover {
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  cursor: pointer;
+}
+.post .title {
+  height:80px;
+  border-bottom: 1px solid lightgray;
+  display: grid;
+  place-content: center;
+  font-size: 30px;
+}
+
+.post .body {
+  flex: 60%;
+  display: grid;
+  place-content: center;
+  }
+
+/*.post .footer {*/
+/*  height:25px;*/
+/*  border-top: 1px solid lightgray;*/
+/*  padding-top: 20px;*/
+/*  text-align: center;*/
+/*}*/
+
+
+/* CREATE POST PAGE CSS */
+
+.App{
+  background-color: #151C35;
+}
+
+.App a {
+  color: whitesmoke;
+  display: block;
+  padding-left: 20px;
+  padding-top: 20px;
+}
+
+a:link {
+  text-decoration: none;
+}
+
+.App button{
+  display: block;
+  padding-left: 20px;
+  padding-top: 20px;
+  background-color: transparent;
+  color: whitesmoke;
+  border: none;
+  font-size: 17px;
+  cursor: pointer;
+}
+
+.swiper-wrapper{
+  width: 50%;
+}
+
+
+.createPostPage {
+  font-family: Arial, Helvetica;
+  color: whitesmoke;
+  width: 100vw;
+  height: 109vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.createPostPage form{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 700px;
+  height: 60%;
+  padding: 20px;
+  border: 5px solid #ffb6c1;
+  border-radius: 5px;
+}
+
+
+.formContainer #inputCreatePost {
+  height: 50px;
+  margin-top: 10px;
+  margin-bottom: 40px;
+  border: 2px solid grey;
+  border-radius: 5px;
+  padding-left: 10px;
+  font-size: 20px;
+}
+
+.createPostPage button {
+  margin-top:30px;
+  height: 60px;
+  width: 40%;
+  border: none;
+  border-radius: 10px;
+  background-color: #ffb6c1;
+  color: black;
+  font-size: 18px;
+  margin-left: 30%;
+}
+
+.formContainer button:hover {
+  cursor: pointer;
+
+}
+
+span{
+  color: indianred;
+}
+
+/* INDIVIDUAL POST */
+.postPage {
+  color: whitesmoke;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 100%;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  padding-left: 20px;
+}
+
+.frameLeft{
+  flex: 50%;
+  border: 7px solid blue; padding: 12px;
+  border-radius: 30px;
+}
+
+.title{
+  font-size: 45px;
+}
+
+.leftSide {
+  height: calc(100vh - 70px);
+  font-size: 20px;
+  display: grid;
+  place-items: center;
+}
+
+.rightSide {
+  flex: 50%;
+  height: calc(100vh - 250px);
+  display: grid;
+  place-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.rightSide .addCommentContainer {
+  flex: 20%;
+  width: 100%;
+  display: grid;
+  place-items: center;
+  margin-top: 25px;
+}
+
+.addCommentContainer input{
+  width: 90%;
+  height: 70px;
+  border-radius: 8px;
+  border: none;
+}
+
+.addCommentContainer button {
+  border-radius: 8px;
+  border: none;
+  background-color: #ffb6c1;
+  color: white;
+  height: 80px;
+  width: 140px;
+  margin-top: 30px;
+  padding-right: 20px;
+  padding-left: 12px;
+  padding-top: 10px;
+  font-size: 18px;
+}
+
+.addCommentContainer button:hover {
+  cursor: pointer;
+
+}
+.addCommentContainer input {
+  border: 2px solid dodgerblue;
+}
+
+.rightSide .listOfComments {
+  flex: 80%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.listOfComments .comment {
+  width: 70%;
+  height: auto;
+  padding: 30px;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.userN{
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.LoginPage{
+  font-family: Arial, Helvetica;
+  color: whitesmoke;
+  width: 100vw;
+  height: 109vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.LoginForm{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 700px;
+  height: auto;
+  padding: 20px;
+  margin-bottom: 70px;
+  border: 5px solid #ffb6c1;
+  border-radius: 5px;
+}
+
+.LoginForm input{
+  height: 40px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border: 2px solid grey;
+  border-radius: 5px;
+  padding-left: 10px;
+  font-size: 20px;
+}
+
+.LoginForm button{
+  margin-top:30px;
+  width: 40%;
+  height: 50px;
+  border: none;
+  border-radius: 10px;
+  background-color: #ffb6c1;
+  color: black;
+  font-size: 18px;
+  margin-left: 28%;
+}
+
+.LoginForm button:hover {
+  cursor: pointer;
+}
+
+.dzialaj{
+  color: whitesmoke;
+  height: 100%;
+  font-size: 30px;
+}
