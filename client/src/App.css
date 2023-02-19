@@ -72,14 +72,6 @@ body {
   place-content: center;
   }
 
-/*.post .footer {*/
-/*  height:25px;*/
-/*  border-top: 1px solid lightgray;*/
-/*  padding-top: 20px;*/
-/*  text-align: center;*/
-/*}*/
-
-
 /* CREATE POST PAGE CSS */
 
 .App{
@@ -87,6 +79,7 @@ body {
 }
 
 .App a {
+  width: fit-content;
   color: whitesmoke;
   display: block;
   padding-left: 20px;
@@ -152,9 +145,11 @@ a:link {
   border: none;
   border-radius: 10px;
   background-color: #ffb6c1;
-  color: black;
+  color: white;
   font-size: 18px;
   margin-left: 30%;
+  padding-bottom: 14px;
+  padding-right: 15px;
 }
 
 .formContainer button:hover {
@@ -303,9 +298,11 @@ span{
   border: none;
   border-radius: 10px;
   background-color: #ffb6c1;
-  color: black;
+  color: white;
   font-size: 18px;
   margin-left: 28%;
+  padding-right: 10px;
+  padding-bottom: 40px;
 }
 
 .LoginForm button:hover {
@@ -316,4 +313,18 @@ span{
   color: whitesmoke;
   height: 100%;
   font-size: 30px;
+}
+
+.comment button{
+  color: whitesmoke;
+  margin-top:50px;
+  padding-bottom: 8%;
+  padding-right: 4%;
+  width: 120px;
+  height: 50px;
+  border: none;
+  border-radius: 7px;
+  background-color: #ffb6c1;
+  font-size: 18px;
+  margin-left: 40%;
 }

@@ -66,7 +66,6 @@ function App(){
                   <div className="odnosniki">
                       <Link to="/"> Home Page</Link>
                       <Link to="/createpost"> Add movie</Link>
-                      {/*<h1 className="dzialaj">{authState.username}</h1>*/}
                       {localStorage.getItem('accessToken') == null ? (
                           <>
                               <Link to="/login"> Login</Link>
