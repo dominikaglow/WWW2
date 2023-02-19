@@ -12,7 +12,11 @@ import axios from "axios";
 
 function App(){
     /*state to see if we are logged in or not*/
-    const [authState, setAuthState] = useState(false);
+    const [authState, setAuthState] = useState({
+        username: "",
+        id: 0,
+        status: false,
+    });
 
     useEffect(() => {
         /*making request, and if there are any errors(if the middleware
@@ -25,12 +29,13 @@ function App(){
             //gdy AuthMiddleware zwroci jakis error
             if (response.data.error) {
                 //zmiana wartosci status
-                setAuthState({
-                    username: "",
-                    id: 0,
-                    status: false,
-                });
-                // setAuthState({...authState, status: false});
+                //destructure the object to change only one parameter
+                // setAuthState({
+                //     username: "",
+                //     id: 0,
+                //     status: false,
+                // });
+                setAuthState({...authState, status: false});
             }
             else {
                 /*to zapobiega, ze jak jestesmy zalogowani i odswiezymy strone to nie pojawiaja nam sie przyciski login i drugi*/
@@ -47,12 +52,13 @@ function App(){
     const logout = () => {
         localStorage.removeItem("accessToken");
         //setAuthState(false);
-        setAuthState({
-            username: "",
-            id: 0,
-            status: false,
-        });
-        setAuthState(false);
+        // setAuthState({
+        //     username: "",
+        //     id: 0,
+        //     status: false,
+        // });
+        setAuthState({...authState, status: false});
+        // setAuthState(false);
         console.log(authState);
     };
 
