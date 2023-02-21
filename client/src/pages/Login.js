@@ -6,7 +6,7 @@ import {AuthContext} from "../helpers/AuthContext";
 function Login(){
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
-    /*acces the function that enables us to change the state of ou AuthState*/
+    /*access the function that enables us to change the state of ou AuthState*/
     const {setAuthState} = useContext(AuthContext);
 
     let history = useHistory();

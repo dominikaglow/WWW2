@@ -13,13 +13,11 @@ function Registration(){
     let history = useHistory();
 
     const validationSchema = Yup.object().shape({
-        username: Yup.string().min(3).max(20).required(), /*min 3 znaki, max 20 znakow*/
+        username: Yup.string().min(3).max(20).required(),
         password: Yup.string().min(4).max(20).required(),
     });
 
     /*make input to table, we need axios*/
-    //wywolywana gdy zatwierdzamy formularz
-    //data zawiera to co uzytkownik wpisze w formularzu
     const onSubmit = (data) => {
         axios.post("http://localhost:3001/auth", data).then(() => {
             console.log(data);
@@ -55,7 +53,6 @@ function Registration(){
             </Formik>
         </div>
     )
-//    name="password" sprawia, ze wpisywane haslo to kropki
 }
 
 export default Registration

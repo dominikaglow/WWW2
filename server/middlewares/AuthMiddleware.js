@@ -1,9 +1,8 @@
 /*function to verify if data is valid*/
-//JWT is a method of safe data transfer between between server and client
+//JWT is a method of safe data transfer between server and client
 //It works by creating a token and sending it to client.
 const {verify} = require("jsonwebtoken");
 
-/*next - function to use when you want to move forward*/
 /*it will be executed before request*/
 const validateToken = (req, res, next) => {
     /*grab token from frontend*/
@@ -18,6 +17,7 @@ const validateToken = (req, res, next) => {
         //req.user will be visible in all files, requests where validateToken is used
         req.user = validToken;
         if (validToken){
+            /*next - function to use when you want to move forward*/
             return next();
         }
     }catch (err){
