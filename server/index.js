@@ -1,12 +1,17 @@
+//express It simplifies the process of building server-side web applications
+//and APIs by providing a set of tools and utilities that make it easy to handle
+//HTTP requests and responses, manage sessions, and interact with databases and other data sources.
 const express = require("express");
 const app = express();
 const cors = require("cors");
 
-
-/*rozwiazuje problemy dotyczace parsowania raw json*/
+//responsible for parsing any JSON data sent in the request body and making it available in request.body property
 app.use(express.json());
+
+// it allows the server to receive requests from a different domain and enables the sharing of data resources
 app.use(cors());
 
+//import the database models defined in the models directory
 const db = require('./models')
 
 //Routers - manage routes in app

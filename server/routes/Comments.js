@@ -5,9 +5,6 @@ const {validateToken} = require("../middlewares/AuthMiddleware");
 
 router.get("/:postId", async (req, res) => {
     const postId = req.params.postId;
-    /*The findByPk method obtains only a single entry from the table, using the provided primary key.
-    /*Returns row from database*/
-    /*Generates SELECT queries*/
     const comments = await Comments.findAll({where: {postId: postId}});
     res.json(comments);
 });
@@ -15,13 +12,12 @@ router.get("/:postId", async (req, res) => {
 /*create comments*/
 router.post("/", validateToken, async (req, res) => {
     const comment = req.body;
-    /*storing the username*/
+    /*storing the username from AuthMiddleware*/
     const username = req.user.username;
-    /*dodawanie username do obiektu comment*/
+    /*adding username to comment object*/
     comment.username = username;
-    await Comments.create(comment); /*Comments to tabela w mysql*/
-    // /*async i await zeby poczekac na wprowadzenie danych zanim przejdzie sie dalej*/
-    res.json(comment); /*zwracanie odpowiedzi z zapytania */
+    await Comments.create(comment); /*Comments is a table*/
+    res.json(comment);
 });
 
 router.delete("/:commentId", validateToken, async (req, res) => {

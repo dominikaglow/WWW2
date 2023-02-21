@@ -1,7 +1,9 @@
 import React from "react";
 import {Formik, Form, Field, ErrorMessage} from 'formik';
 import * as Yup from 'yup';
+//axios -> making requests
 import axios from "axios";
+//react-router-dom is used for client-side routing in React applications.
 import {useHistory} from "react-router-dom";
 
 
@@ -11,13 +13,11 @@ function CreatePost(){
     const initialValues = {
         title:"",
         postText: "",
-        // username: "",
     };
 
     const validationSchema = Yup.object().shape({
         title: Yup.string().required(),
         postText: Yup.string().required(),
-        // username: Yup.string().min(3).max(20).required(), /*min 3 znaki, max 20 znakow*/
     });
 
     const onSubmit = (data) => {
@@ -48,14 +48,6 @@ function CreatePost(){
                         name="postText"
                         placeholder="Enter content here">
                     </Field>
-
-                    {/*<label>Username: </label>*/}
-                    {/*<ErrorMessage name="username" component="span"/>*/}
-                    {/*<Field*/}
-                    {/*    id="inputCreatePost"*/}
-                    {/*    name="username"*/}
-                    {/*    placeholder="Enter username here">*/}
-                    {/*</Field>*/}
                     <button type="submit">Upload review</button>
                 </Form>
             </Formik>

@@ -6,14 +6,10 @@ const bcryptjs = require("bcryptjs");
 const {sign} = require('jsonwebtoken');
 const {validateToken} = require('../middlewares/AuthMiddleware');
 
-/*ENDPOINTY GET I POST*/
 /*insert data into database*/
 router.post("/", async (req, res) => {
-    /*za kazdym razem gdy to wywolujemy bedziemy wysylac obiekt zawierajacy username i password*/
     const {username, password} = req.body;
-    /*haszowanie podanego przez uzytkownika hasla*/
-    //w haszowaniu chodzi o to, ze funkcja haszujaca dziala tylko w jedna strone. Zeby potem sprawdzic
-    //czy dany uzytkownik istnieje haszujemy podane przy logowaniu haslo i porownujemy zahaszowane stringi
+    /*hash the password*/
     //hash - hashed password
     bcryptjs.hash(password, 10).then((hash) => {
         Users.create({
@@ -27,35 +23,35 @@ router.post("/", async (req, res) => {
 router.post("/login", async (req, res) => {
    const {username, password} = req.body;
 
-   /*sprawdzanie czy podany username istnieje w tabeli*/
-    /*bo nie mozemy uzyc tej nazwy jesli nie ma jej w tabeli*/
 
-    /*grab me a user where username is username*/
-    /*jesli takiego usera nie ma to user bedzie pusty*/
+    //check if given username exists in database
+    /*grab a user where username is username*/
+    /*if the username doesnt exit the username value will be empty*/
     const user = await Users.findOne({where: {username: username}});
 
     if (!user) {
         return res.json({error: "User doesn't exist."});
     }
 
-    /*user.password - haslo z bazy danych*/
-    /*match to funkcja*/
+    /*user.password - password from database*/
     bcryptjs.compare(password, user.password).then((match) => {
        if (!match) {
            return res.json({error: "Wrong password!"});
        }
 
+       //create token
+       //data that we want to keep secure is an argument in sign
        const accessToken = sign(
             {username: user.username, id: user.id},
             "securerandomword"
        );
-       /*data that we wanna keep secure is argument in sign*/
+       // because of that we have access to token in frontend
        res.json({token: accessToken, username: username, id: user.id});
     });
 });
 
-/*zapobieganie przed fake tokens*/
-//wukorzystywane w App.js w useEffect
+/*prevent fake tokens*/
+//used in App.js in useEffect
 router.get('./auth', validateToken, (req, res) => {
     res.json(req.user);
 });

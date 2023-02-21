@@ -26,19 +26,13 @@ function App(){
                 accessToken: localStorage.getItem("accessToken"),
             },
         }).then((response) => {
-            //gdy AuthMiddleware zwroci jakis error
+            //when AuthMiddleware returns some error
             if (response.data.error) {
-                //zmiana wartosci status
-                //destructure the object to change only one parameter
-                // setAuthState({
-                //     username: "",
-                //     id: 0,
-                //     status: false,
-                // });
+                //change value of status
                 setAuthState({...authState, status: false});
             }
             else {
-                /*to zapobiega, ze jak jestesmy zalogowani i odswiezymy strone to nie pojawiaja nam sie przyciski login i drugi*/
+                //ensure that when we are logged in and refresh the page we are still logged in
                 setAuthState({
                     username: response.data.username,
                     id: response.data.id,
@@ -56,8 +50,7 @@ function App(){
             id: 0,
             status: false,
         });
-        // setAuthState(false);
-        console.log(authState);
+        // console.log(authState);
     };
     return (
       <div className="App">

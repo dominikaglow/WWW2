@@ -1,12 +1,13 @@
+//useState - maintain and update data over time
 import React, { useEffect, useState, useContext } from "react";
+//useParams is used to extract the parameters from the URL.
 import {useParams} from "react-router-dom";
 import axios from "axios";
 import { AuthContext } from "../helpers/AuthContext";
 
 function Post(){
-    let {id} = useParams(); /*id wiersza z bazy*/
+    let {id} = useParams(); /*row id from database*/
 
-    /*state containing information that we need*/
     const [postObject, setPostObject] = useState({});
 
     const [comments, setComments] = useState([]);
@@ -16,7 +17,6 @@ function Post(){
 
     const { authState } = useContext(AuthContext);
 
-    //useEffect jest wywolywane przy kazdej zmianie chyba, ze jest [] to raz gdy strona sie renderuje
     useEffect(() => {
         axios.get(`http://localhost:3001/posts/byId/${id}`).then((response) => {
             setPostObject(response.data);
@@ -28,31 +28,30 @@ function Post(){
         });
     }, []);
 
-    /*funkcja, ktora bedzie wywolywana przy kazdym wcisnieciu przycisku*/
+    //function that is called after each button click
     const addComment = () => {
         axios.post("http://localhost:3001/comments", {
-            commentBody: newComment,
-            PostId: id,
-        },
+                commentBody: newComment,
+                PostId: id,
+            },
             {
                 headers: {
-                    //pobranie jaka wartosc jest w accessToken w application
+                    //get the value of accessToken
                     accessToken: localStorage.getItem("accessToken"),
                 },
             }
-            ).then((response) => {
+        ).then((response) => {
             if (response.data.error) {
                 alert(response.data.error);
             }
             else{
-                /*automatyczne pojawianie sie nowego komentarza bez odswiezania strony*/
                 const commentToAdd = {
                     commentBody: newComment,
                     username: response.data.username,
                 };
                 /*...comments - previous list of comments*/
                 setComments([...comments, commentToAdd]);
-                /*czyszczenie pola na komentarz z poprzedniej zawartosci*/
+                //clear the comment field from the previous content
                 setNewComment("");
             }
         });
@@ -65,6 +64,8 @@ function Post(){
             })
             .then(() => {
                 setComments(
+                    //val contains all values for comment from table
+                    //we only keep comments that have id different from the comment with id that we want to delete
                     comments.filter((val) => {
                         return val.id !== id;
                     })
@@ -78,7 +79,6 @@ function Post(){
                 <div className="leftSide">
                     <div className="title">{postObject.title}</div>
                     <div className="postText">{postObject.postText}</div>
-                    {/*<div className="footer">{postObject.username}</div>*/}
                 </div>
             </div>
             <div className="rightSide">
